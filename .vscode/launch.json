@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Application<api.controle.equipamentos>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.ebstecnologia.api.controle.equipamentos.Application",
+            "projectName": "api.controle.equipamentos",
+            "args": ""
+        }
+    ]
+}
