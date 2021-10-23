@@ -15,8 +15,11 @@ public class SupervisorService {
 
     private final SupervisorRepository supervisorRepository;
 
+
+
     public Supervisor save(Supervisor sup){
-        return supervisorRepository.save(sup);
+       return supervisorRepository.save(sup);
+
     }
     public List<Supervisor> findAll(){
         return supervisorRepository.findAll();
@@ -30,5 +33,19 @@ public class SupervisorService {
                         ()-> new ResponseStatusException(
                                 HttpStatus.NOT_FOUND,"Supervisor não encontrado id:"+id
                         ));
+    }
+
+    public void update(Integer id, Supervisor sup) {
+        supervisorRepository.findById(id)
+                .map(supervisor -> {
+                    sup.setId(supervisor.getId());
+                    return supervisorRepository.save(sup);
+                })
+                .orElseThrow(
+                        () -> new ResponseStatusException(
+                                HttpStatus.NOT_FOUND
+                        )
+                );
+
     }
 }

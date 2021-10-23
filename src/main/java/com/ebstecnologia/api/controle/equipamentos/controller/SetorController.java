@@ -1,5 +1,7 @@
 package com.ebstecnologia.api.controle.equipamentos.controller;
 
+import com.ebstecnologia.api.controle.equipamentos.controller.DTO.SetorDTO;
+import com.ebstecnologia.api.controle.equipamentos.controller.DTO.SetorUpdateDTO;
 import com.ebstecnologia.api.controle.equipamentos.model.Setor;
 import com.ebstecnologia.api.controle.equipamentos.service.SetorService;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +16,7 @@ public class SetorController {
     private final SetorService setorService;
 
     @PostMapping
-    public Setor save(@RequestBody Setor setor){
+    public Setor save(@RequestBody SetorDTO setor){
         return setorService.save(setor);
     }
     @GetMapping
@@ -26,7 +28,7 @@ public class SetorController {
         return setorService.findById(id);
     }
     @PutMapping("/{id}")
-    public void update(@PathVariable Integer id, @RequestBody Setor setor){
-        setorService.update(id , setor);
+    public void update(@PathVariable Integer id, @RequestBody SetorUpdateDTO setor){
+        setorService.update(id, setor);
     }
 }

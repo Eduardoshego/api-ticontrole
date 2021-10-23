@@ -1,6 +1,9 @@
 package com.ebstecnologia.api.controle.equipamentos.service;
 
+import com.ebstecnologia.api.controle.equipamentos.controller.DTO.SetorDTO;
+import com.ebstecnologia.api.controle.equipamentos.controller.DTO.SetorUpdateDTO;
 import com.ebstecnologia.api.controle.equipamentos.model.Setor;
+import com.ebstecnologia.api.controle.equipamentos.model.Supervisor;
 import com.ebstecnologia.api.controle.equipamentos.repositories.SetorRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,9 +17,18 @@ import java.util.List;
 public class SetorService {
 
     private final SetorRepository setorRepository;
+    private final SupervisorService supService;
 
-    public Setor save(Setor set){
-        return setorRepository.save(set);
+    public Setor save(SetorDTO setorDTO){
+        Supervisor supervisor = supService.findById(setorDTO.getIdSupervisor());
+        Setor setor = new Setor();
+        setor.setSupervisor(supervisor);
+        setor.setSetorNome(setorDTO.getNome());
+        setor.setTelefone(setorDTO.getTelefone());
+        setor.setRamal(setorDTO.getRamal());
+        return setorRepository.save(setor);
+
+
 
     }
     public List<Setor> findAll(){
@@ -32,14 +44,25 @@ public class SetorService {
     public void deleteById(Integer id){
         setorRepository.findById(id);
     }
-    public void update(Integer id, Setor setor){
+    public void update(Integer id, SetorUpdateDTO sectorActualized){
+
         setorRepository.findById(id)
-                .map(produto -> {
-                    setor.setId(produto.getId());
-                    return setorRepository.save(setor);
-                }).orElseThrow(
-                        () -> new ResponseStatusException(HttpStatus.NOT_FOUND)
-                );
+                .orElseThrow(()-> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND
+                ));
+        Supervisor supervisor = supService.findById(sectorActualized.getIdSupervisor());
+        Setor setor = new Setor();
+        setor.setId(id);
+        setor.setSetorNome(sectorActualized.getNome());
+        setor.setEmail(sectorActualized.getEmail());
+        setor.setTelefone(sectorActualized.getTelefone());
+        setor.setRamal(sectorActualized.getRamal());
+        setor.setSupervisor(supervisor);
+        setorRepository.save(setor);
+
+
+
+
     }
 
 }

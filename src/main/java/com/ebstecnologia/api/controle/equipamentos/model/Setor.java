@@ -13,8 +13,18 @@ public class Setor {
     @GeneratedValue
     private Integer id;
 
-    @Column(name = "setor_nome", nullable = false, length = 100)
+    @Column(name = "setor_nome", nullable = true, length = 100)
     private String setorNome;
+
+    @Column(name = "e_mail")
+    private String email;
+
+    @Column
+    private String telefone;
+
+    @Column
+    private String ramal;
+
 
     @ManyToOne
     @JoinColumn(name = "supervisor_ID")

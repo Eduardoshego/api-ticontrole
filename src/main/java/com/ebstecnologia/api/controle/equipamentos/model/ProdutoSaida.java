@@ -1,5 +1,6 @@
 package com.ebstecnologia.api.controle.equipamentos.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -15,20 +16,30 @@ public class ProdutoSaida {
     private Integer id;
 
     @Column
+    private String produtoDecricao;
+
+    @Column
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate localDate;
+
+    @Column
+    @JsonFormat(pattern = "hh:mm")
+    private LocalTime time;
 
     @ManyToOne
     @JoinColumn(name = "produto_id")
     private Produto produto;
 
-    @Column
-    private LocalTime localTime;
 
     @ManyToOne
     @JoinColumn(name = "setor_id")
     private Setor setor;
 
-    @ManyToOne
-    @JoinColumn(name = "impressora_id")
-    private Impressora impressora;
+
+
+    @PrePersist
+    public void data(){
+        setLocalDate(LocalDate.now());
+        setTime(LocalTime.now());
+    }
 }
