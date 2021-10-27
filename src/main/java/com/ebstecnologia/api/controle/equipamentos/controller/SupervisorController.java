@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/supervisores")
 @AllArgsConstructor
+@CrossOrigin("http://localhost:4200")
 public class SupervisorController {
 
     private final SupervisorService service;

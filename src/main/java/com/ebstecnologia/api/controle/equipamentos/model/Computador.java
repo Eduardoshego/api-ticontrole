@@ -2,8 +2,8 @@ package com.ebstecnologia.api.controle.equipamentos.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Entity
@@ -15,6 +15,7 @@ public class Computador {
     private Integer id;
 
     @Column(nullable = false, name = "nome_computador",length = 40)
+    @NotEmpty
     private String nomeComputador;
 
     @Column(nullable = false, length = 50)
@@ -22,6 +23,7 @@ public class Computador {
     private String ip;
 
     @Column( length = 50)
+    @NotEmpty                //Anotation de validação de dados.
     private String marca;
 
     @ManyToOne
