@@ -9,13 +9,13 @@ import java.util.List;
 @Table(name = "supervisor")
 @Entity
 @Data
-public class Supervisor {
+public class CadastroPessoas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "supervisor_nome",nullable = false, length = 60)
-    private String supervisorNome;
+    private String nome;
 
     @Column(name = "num_telefone",length = 16)
     @JsonFormat(pattern = "(00) 0-0000-0000")
@@ -23,8 +23,12 @@ public class Supervisor {
 
     @Column(name = "email")
     @Email
-    private String eMail;
+    private String email;
 
     @OneToMany
     private List<Setor> setorList;
+
+    @ManyToOne
+    @JoinColumn(name = "cargo_id")
+    private Cargo cargo;
 }

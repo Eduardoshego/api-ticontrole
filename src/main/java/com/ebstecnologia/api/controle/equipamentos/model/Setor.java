@@ -28,7 +28,7 @@ public class Setor {
 
     @ManyToOne
     @JoinColumn(name = "supervisor_ID")
-    private Supervisor supervisor;
+    private CadastroPessoas supervisor;
 
     @OneToMany
     private List<ProdutoSaida> produtoSaidaList;

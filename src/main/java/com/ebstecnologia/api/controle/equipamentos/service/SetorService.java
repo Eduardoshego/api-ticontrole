@@ -3,7 +3,7 @@ package com.ebstecnologia.api.controle.equipamentos.service;
 import com.ebstecnologia.api.controle.equipamentos.controller.DTO.SetorDTO;
 import com.ebstecnologia.api.controle.equipamentos.controller.DTO.SetorUpdateDTO;
 import com.ebstecnologia.api.controle.equipamentos.model.Setor;
-import com.ebstecnologia.api.controle.equipamentos.model.Supervisor;
+import com.ebstecnologia.api.controle.equipamentos.model.CadastroPessoas;
 import com.ebstecnologia.api.controle.equipamentos.repositories.SetorRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,10 +17,10 @@ import java.util.List;
 public class SetorService {
 
     private final SetorRepository setorRepository;
-    private final SupervisorService supService;
+    private final CadastroPessoasService supService;
 
     public Setor save(SetorDTO setorDTO){
-        Supervisor supervisor = supService.findById(setorDTO.getIdSupervisor());
+        CadastroPessoas supervisor = supService.findById(setorDTO.getIdSupervisor());
         Setor setor = new Setor();
         setor.setSupervisor(supervisor);
         setor.setSetorNome(setorDTO.getNome());
@@ -50,7 +50,7 @@ public class SetorService {
                 .orElseThrow(()-> new ResponseStatusException(
                         HttpStatus.NOT_FOUND
                 ));
-        Supervisor supervisor = supService.findById(sectorActualized.getIdSupervisor());
+        CadastroPessoas supervisor = supService.findById(sectorActualized.getIdSupervisor());
         Setor setor = new Setor();
         setor.setId(id);
         setor.setSetorNome(sectorActualized.getNome());
