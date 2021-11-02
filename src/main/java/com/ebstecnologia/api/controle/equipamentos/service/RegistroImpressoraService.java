@@ -2,6 +2,7 @@ package com.ebstecnologia.api.controle.equipamentos.service;
 
 import com.ebstecnologia.api.controle.equipamentos.model.RegistroImpressora;
 import com.ebstecnologia.api.controle.equipamentos.repositories.RegistroImpressoraRepository;
+import com.ebstecnologia.api.controle.equipamentos.service.exception.MyObjectNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -20,8 +21,8 @@ public class RegistroImpressoraService {
     public RegistroImpressora findById(Integer id){
         return registroImpressoraRepository.findById(id)
                 .orElseThrow(()->
-                        new ResponseStatusException(
-                                HttpStatus.NOT_FOUND,"Registro inválido"
+                        new MyObjectNotFoundException(
+                                "Não existe registro com esse id: " + id
                         ));
     }
     public List<RegistroImpressora> findAll(){

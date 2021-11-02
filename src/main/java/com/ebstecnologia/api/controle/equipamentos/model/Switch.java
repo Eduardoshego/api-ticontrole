@@ -3,11 +3,14 @@ package com.ebstecnologia.api.controle.equipamentos.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Data
 @Entity
-public class Switch {
+public class Switch implements Serializable {
+
+    private final static long serialVersionUID =1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

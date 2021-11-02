@@ -2,6 +2,7 @@ package com.ebstecnologia.api.controle.equipamentos.service;
 
 import com.ebstecnologia.api.controle.equipamentos.model.Processador;
 import com.ebstecnologia.api.controle.equipamentos.repositories.ProcessadorRepository;
+import com.ebstecnologia.api.controle.equipamentos.service.exception.MyObjectNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -23,8 +24,11 @@ public class ProcessadorService {
     }
     public Processador findById(Integer id) {
 
-        return processadorRepository.findById(id).orElseThrow(()-> new
-                ResponseStatusException(HttpStatus.NOT_FOUND,"Processador não encontrado"));
+        return processadorRepository
+                .findById(id)
+                .orElseThrow(
+                        ()-> new MyObjectNotFoundException(
+                                "Processador não encontrado com esse id:" + id));
     }
     public void deletById(Integer id){
         processadorRepository.deleteById(id);

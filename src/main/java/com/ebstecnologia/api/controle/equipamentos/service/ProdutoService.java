@@ -2,6 +2,7 @@ package com.ebstecnologia.api.controle.equipamentos.service;
 
 import com.ebstecnologia.api.controle.equipamentos.model.Produto;
 import com.ebstecnologia.api.controle.equipamentos.repositories.ProdutoRepository;
+import com.ebstecnologia.api.controle.equipamentos.service.exception.MyObjectNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -23,8 +24,8 @@ public class ProdutoService {
     public Produto findById(Integer id){
         return produtoRepository.findById(id)
                 .orElseThrow(
-                        ()-> new ResponseStatusException(
-                                HttpStatus.NOT_FOUND,"Produto não encontrado com esse id" + id )
+                        ()-> new MyObjectNotFoundException(
+                                "Não existe produto com esse id: " + id )
                         );
     }
     public void deletProduto(Integer id){
@@ -32,12 +33,9 @@ public class ProdutoService {
     }
     public void update(Integer id, Produto produtoAtualizado)
     {
-        produtoRepository.findById(id)
-                .map(produto -> {
-                    produtoAtualizado.setId(produto.getId());
-                    return produtoRepository.save(produtoAtualizado);
-                }).orElseThrow(
-                        () -> new ResponseStatusException(HttpStatus.NOT_FOUND)
-                );
+        Produto obj = findById(id);
+        obj.setId(id);
+        obj = produtoAtualizado;
+        save(obj);
     }
 }

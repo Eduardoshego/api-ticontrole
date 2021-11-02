@@ -15,7 +15,6 @@ import java.util.List;
 public class ProdutoSaidaService {
     private final ProdutoSaidaRepository produtoSaidaRepository;
     private final ProdutoService produtoService;
-    private final ImpressoraService impressoraService;
     private final SetorService setorService;
 
     public ProdutoSaida save(ProdutoSaidaDTO produtoSaidaDTO){

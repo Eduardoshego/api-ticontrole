@@ -2,6 +2,7 @@ package com.ebstecnologia.api.controle.equipamentos.service;
 
 import com.ebstecnologia.api.controle.equipamentos.model.Cargo;
 import com.ebstecnologia.api.controle.equipamentos.repositories.CargoRepository;
+import com.ebstecnologia.api.controle.equipamentos.service.exception.MyObjectNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -24,12 +25,18 @@ public class CargoService {
     public Cargo findById(Integer id){
         return cargoRepository.findById(id)
                 .orElseThrow(
-                        ()->new ResponseStatusException(
-                                HttpStatus.NOT_FOUND,"Cargo não encontrado"
+                        ()->new MyObjectNotFoundException(
+                                "Não existe cargo cadastrado com esse id: " + id
                         )
                 );
     }
     public void deleteById(Integer id){
         cargoRepository.deleteById(id);
+    }
+    public void update(Integer id, Cargo cargo ){
+        findById(id);
+        Cargo obj =  cargo;
+        obj.setId(id);
+        save(obj);
     }
 }

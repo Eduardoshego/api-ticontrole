@@ -3,11 +3,14 @@ package com.ebstecnologia.api.controle.equipamentos.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "impressora")
 @Data
-public class Impressora {
+public class Impressora implements Serializable {
+
+    private final static long serialVersion = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -5,6 +5,7 @@ import com.ebstecnologia.api.controle.equipamentos.controller.DTO.SetorUpdateDTO
 import com.ebstecnologia.api.controle.equipamentos.model.Setor;
 import com.ebstecnologia.api.controle.equipamentos.model.CadastroPessoas;
 import com.ebstecnologia.api.controle.equipamentos.repositories.SetorRepository;
+import com.ebstecnologia.api.controle.equipamentos.service.exception.MyObjectNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -37,8 +38,7 @@ public class SetorService {
     public Setor findById(Integer id){
         return setorRepository.findById(id)
                 .orElseThrow(
-                        ()->new ResponseStatusException
-                                (HttpStatus.NOT_FOUND, "Setor não encontrado com esse id: " + id)
+                        ()->new MyObjectNotFoundException("Setor não encontrado com esse id: " + id)
                 );
     }
     public void deleteById(Integer id){

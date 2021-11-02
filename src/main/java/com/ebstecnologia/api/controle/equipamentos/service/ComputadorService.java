@@ -6,6 +6,7 @@ import com.ebstecnologia.api.controle.equipamentos.model.Memoria;
 import com.ebstecnologia.api.controle.equipamentos.model.Processador;
 import com.ebstecnologia.api.controle.equipamentos.model.Switch;
 import com.ebstecnologia.api.controle.equipamentos.repositories.ComputadorRepositoy;
+import com.ebstecnologia.api.controle.equipamentos.service.exception.MyObjectNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -45,20 +46,13 @@ public class ComputadorService {
     }
     public Computador findById(Integer id){
         return computadorRepositoy.findById(id)
-                .orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND,"Computador não encontrado com esse id"));
+                .orElseThrow(()->new MyObjectNotFoundException("Computador não encontrado com esse id"));
     }
     public void update(Integer id,  Computador comp){
-        computadorRepositoy.findById(id)
-                .map(
-                        computador -> {
-                            comp.setId(computador.getId());
-                            return computadorRepositoy.save(comp);
-                        }
-                )
-                .orElseThrow(
-                        ()-> new ResponseStatusException(
-                                HttpStatus.NOT_FOUND
-                        )
-                );
+        findById(id);
+        Computador obj = comp;
+        obj.setId(id);
+        computadorRepositoy.save(obj);
+
     }
 }

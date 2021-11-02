@@ -2,6 +2,7 @@ package com.ebstecnologia.api.controle.equipamentos.service;
 
 import com.ebstecnologia.api.controle.equipamentos.model.Impressora;
 import com.ebstecnologia.api.controle.equipamentos.repositories.ImpressoraRepositroy;
+import com.ebstecnologia.api.controle.equipamentos.service.exception.MyObjectNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -26,27 +27,18 @@ public class ImpressoraService {
     public Impressora findById(Integer id){
         return impressoraRepositroy.findById(id)
                 .orElseThrow(
-                        ()->new ResponseStatusException(
-                                HttpStatus.NOT_FOUND, "Impressora não encontrada"
+                        ()->new MyObjectNotFoundException(
+                                "Impressora não encontrada com esse id: " + id
                         )
                 );
     }
     public void update(Integer id, Impressora impressoraAtualizada){
-        impressoraRepositroy
-                .findById(id)
-                .map(impressora -> {
-                    impressoraAtualizada.setId(impressora.getId());
-                    if (impressora.getComputador() != impressoraAtualizada.getComputador()){
-
-                    }
+        impressoraRepositroy.findById(id);
+        Impressora obj = impressoraAtualizada;
+        obj.setId(id);
+        impressoraRepositroy.save(obj);
 
 
-                    return  impressoraRepositroy.save(impressoraAtualizada);
-                })
-                .orElseThrow(
-                        ()-> new ResponseStatusException(
-                                HttpStatus.NOT_FOUND
-                        )
-                );
+
     }
 }

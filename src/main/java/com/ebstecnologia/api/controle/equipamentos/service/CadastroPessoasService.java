@@ -2,10 +2,9 @@ package com.ebstecnologia.api.controle.equipamentos.service;
 
 import com.ebstecnologia.api.controle.equipamentos.model.CadastroPessoas;
 import com.ebstecnologia.api.controle.equipamentos.repositories.CadastroPessoasRepository;
+import com.ebstecnologia.api.controle.equipamentos.service.exception.MyObjectNotFoundException;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -30,22 +29,15 @@ public class CadastroPessoasService {
     public CadastroPessoas findById(Integer id){
         return supervisorRepository.findById(id)
                 .orElseThrow(
-                        ()-> new ResponseStatusException(
-                                HttpStatus.NOT_FOUND,"Supervisor não encontrado id:"+id
+                        ()-> new MyObjectNotFoundException("Cadastro não encontrado id: "
+                                + id
                         ));
     }
 
     public void update(Integer id, CadastroPessoas sup) {
-        supervisorRepository.findById(id)
-                .map(supervisor -> {
-                    sup.setId(supervisor.getId());
-                    return supervisorRepository.save(sup);
-                })
-                .orElseThrow(
-                        () -> new ResponseStatusException(
-                                HttpStatus.NOT_FOUND
-                        )
-                );
+        CadastroPessoas obj = findById(id);
+        obj.setId(id);
+        save(obj);
 
     }
 }

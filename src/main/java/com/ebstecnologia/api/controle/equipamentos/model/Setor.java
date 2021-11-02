@@ -3,11 +3,14 @@ package com.ebstecnologia.api.controle.equipamentos.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Data
-public class Setor {
+public class Setor implements Serializable {
+
+    private final static long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue

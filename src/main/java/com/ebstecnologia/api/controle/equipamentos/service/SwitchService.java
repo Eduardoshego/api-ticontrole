@@ -2,6 +2,7 @@ package com.ebstecnologia.api.controle.equipamentos.service;
 
 import com.ebstecnologia.api.controle.equipamentos.model.Switch;
 import com.ebstecnologia.api.controle.equipamentos.repositories.SwitchRepository;
+import com.ebstecnologia.api.controle.equipamentos.service.exception.MyObjectNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -20,8 +21,8 @@ public class SwitchService {
     }
     public Switch findById(Integer id){
         return switchRepository.findById(id)
-                .orElseThrow(()-> new ResponseStatusException
-                        (HttpStatus.NOT_FOUND,"Switch não encontradeo"));
+                .orElseThrow(()-> new MyObjectNotFoundException(
+                        "Switch não encontrado com esse id: " + id));
     }
     public void deleteById(Integer id){
         switchRepository.deleteById(id);
