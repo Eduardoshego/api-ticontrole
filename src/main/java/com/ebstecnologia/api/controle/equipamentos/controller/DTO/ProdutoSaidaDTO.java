@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProdutoSaidaDTO {
     private Integer idSetor;
-    private Integer idImpressora;
     private Integer idProduto;
+    private Integer quant;
 }
