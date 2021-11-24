@@ -10,6 +10,6 @@ public class SetorUpdateDTO {
     private String email;
     private String telefone;
     private String ramal;
-    private Integer idSupervisor;
+    private String idSupervisor;
     private Integer id;
 }

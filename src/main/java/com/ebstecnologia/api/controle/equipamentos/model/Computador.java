@@ -53,4 +53,11 @@ public class Computador implements Serializable {
 
     @OneToOne
     private Impressora impressora;
+
+    @ManyToOne
+    @JoinColumn(name = "estabilizador_id")
+    private Estabilizador estabilizador;
+
+    @OneToOne
+    private Monitor monitor;
 }

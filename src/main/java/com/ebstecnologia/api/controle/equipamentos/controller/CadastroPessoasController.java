@@ -1,5 +1,6 @@
 package com.ebstecnologia.api.controle.equipamentos.controller;
 
+import com.ebstecnologia.api.controle.equipamentos.controller.DTO.CadastroPessoaDTO;
 import com.ebstecnologia.api.controle.equipamentos.model.CadastroPessoas;
 import com.ebstecnologia.api.controle.equipamentos.service.CadastroPessoasService;
 import lombok.AllArgsConstructor;
@@ -16,7 +17,7 @@ public class CadastroPessoasController {
     private final CadastroPessoasService service;
 
     @PostMapping
-    public CadastroPessoas save(@RequestBody CadastroPessoas supervisor){
+    public CadastroPessoas save(@RequestBody CadastroPessoaDTO supervisor){
         return service.save(supervisor);
     }
     @GetMapping
@@ -24,15 +25,15 @@ public class CadastroPessoasController {
         return service.findAll();
     }
     @GetMapping("{id}")
-    public CadastroPessoas findById(@PathVariable Integer id){
+    public CadastroPessoas findById(@PathVariable String id){
         return service.findById(id);
     }
     @DeleteMapping("{id}")
-    public void deleteById(Integer id){
+    public void deleteById(String id){
         service.deleteById(id);
     }
     @PutMapping("/{id}")
-    public void update(@PathVariable Integer id, CadastroPessoas sup){
+    public void update(@PathVariable String id, CadastroPessoas sup){
         service.update(id, sup);
     }
 }

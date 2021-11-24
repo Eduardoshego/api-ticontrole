@@ -10,5 +10,5 @@ public class SetorDTO {
     private String email;
     private String telefone;
     private String ramal;
-    private Integer idSupervisor;
+    private String idSupervisor;
 }

@@ -13,8 +13,7 @@ import java.util.List;
 public class CadastroPessoas implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
 
     @Column(name = "supervisor_nome",nullable = false, length = 60)
     private String nome;

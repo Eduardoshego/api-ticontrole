@@ -24,6 +24,7 @@ public class ImpressoraService {
     public List<Impressora> findAll(){
         return impressoraRepositroy.findAll();
     }
+
     public Impressora findById(Integer id){
         return impressoraRepositroy.findById(id)
                 .orElseThrow(
