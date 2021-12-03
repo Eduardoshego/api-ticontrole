@@ -19,7 +19,6 @@ public class Computador implements Serializable {
     private Integer id;
 
     @Column(nullable = false, name = "nome_computador",length = 40)
-    @NotEmpty
     private String nomeComputador;
 
     @Column(nullable = false, length = 50)
@@ -29,21 +28,21 @@ public class Computador implements Serializable {
     @Column( length = 50)
     @NotEmpty                //Anotation de validação de dados.
     private String marca;
-
-    @ManyToOne
-    @JoinColumn(name = "placa_mae_id")
-    private PlacaMae placaMae;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "placa_mae_id")
+//    private PlacaMae placaMae;
 
     @Column( length = 50)
     private String modelo;
-
-    @ManyToOne
-    @JoinColumn(name = "processador_ID")
-    private Processador processador;
-
-    @ManyToOne
-    @JoinColumn(name = "memoria_ID")
-    private Memoria memoria;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "processador_ID")
+//    private Processador processador;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "memoria_ID")
+//    private Memoria memoria;
 
     @OneToMany
     private List<Servico> servico;
@@ -60,4 +59,8 @@ public class Computador implements Serializable {
 
     @OneToOne
     private Monitor monitor;
+
+    @ManyToOne
+    @JoinColumn(name = "setor_id")
+    private Setor setor;
 }

@@ -13,5 +13,6 @@ public class ComputadorDTO {
     private String ip;
     private String marca;
     private String modelo;
+    private Integer setorId;
 
 }

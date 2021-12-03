@@ -36,6 +36,9 @@ public class Setor implements Serializable {
     @OneToMany
     private List<ProdutoSaida> produtoSaidaList;
 
+    @OneToMany
+    private List<Computador> computadorList;
+
 
 
 
