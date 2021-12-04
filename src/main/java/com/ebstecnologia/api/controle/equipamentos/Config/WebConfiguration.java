@@ -1,17 +1,14 @@
 package com.ebstecnologia.api.controle.equipamentos.Config;
 
-import lombok.val;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 @Configuration
@@ -25,7 +22,7 @@ public class WebConfiguration {
         corsConfiguration.setAllowedOrigins(Arrays.asList("https://ti-suporte-front-end.herokuapp.com"));
         corsConfiguration.setAllowedHeaders(all);
         corsConfiguration.setAllowedMethods(all);
-        corsConfiguration.setAllowCredentials(true);
+        corsConfiguration.setAllowCredentials(false);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfiguration);
