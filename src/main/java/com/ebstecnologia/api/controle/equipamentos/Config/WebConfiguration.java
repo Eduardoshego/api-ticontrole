@@ -19,7 +19,7 @@ public class WebConfiguration {
         List<String> all = Arrays.asList("*");
 
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedOrigins(Arrays.asList("https://ti-suporte-front-end.herokuapp.com"));
+        corsConfiguration.setAllowedOrigins(all);
         corsConfiguration.setAllowedHeaders(all);
         corsConfiguration.setAllowedMethods(all);
         corsConfiguration.setAllowCredentials(false);
