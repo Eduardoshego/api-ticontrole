@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/produtos")
 @AllArgsConstructor
+@CrossOrigin("https://ti-suporte-front-end.herokuapp.com")
 public class ProdutoController {
 
     private final ProdutoService produtoService;

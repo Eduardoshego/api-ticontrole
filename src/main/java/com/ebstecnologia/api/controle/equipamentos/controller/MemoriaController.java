@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/memorias")
 @RequiredArgsConstructor
+@CrossOrigin("https://ti-suporte-front-end.herokuapp.com")
 public class MemoriaController {
 
     private final MemoriaService memoriaService;

@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/cargos")
 @AllArgsConstructor
+@CrossOrigin("https://ti-suporte-front-end.herokuapp.com")
 public class CargoController {
 
     private final CargoService cargoService;

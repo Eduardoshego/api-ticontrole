@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("api/processadores")
 @AllArgsConstructor
+@CrossOrigin("https://ti-suporte-front-end.herokuapp.com")
 public class ProcessadorController {
 
     private final ProcessadorService processadorService;

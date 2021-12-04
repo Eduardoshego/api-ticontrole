@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/estabilizadores")
 @AllArgsConstructor
+@CrossOrigin("https://ti-suporte-front-end.herokuapp.com")
 public class EstabilizadorController {
 
     private final EstabilizadorService service;

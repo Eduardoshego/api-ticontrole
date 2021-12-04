@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/switchs")
 @AllArgsConstructor
+@CrossOrigin("https://ti-suporte-front-end.herokuapp.com")
 public class SwitchController {
 
     private final SwitchService switchService;

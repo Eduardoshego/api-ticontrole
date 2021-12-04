@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/supervisores")
 @AllArgsConstructor
-
+@CrossOrigin("https://ti-suporte-front-end.herokuapp.com")
 public class CadastroPessoasController {
 
     private final CadastroPessoasService service;

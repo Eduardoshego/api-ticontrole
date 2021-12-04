@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/monitores")
 @AllArgsConstructor
+@CrossOrigin("https://ti-suporte-front-end.herokuapp.com")
 public class MonitorController {
 
     private final MonitorService service;

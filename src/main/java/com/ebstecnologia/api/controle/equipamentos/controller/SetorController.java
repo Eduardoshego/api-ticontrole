@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/setores")
 @RequiredArgsConstructor
+@CrossOrigin("https://ti-suporte-front-end.herokuapp.com")
 public class SetorController {
     private final SetorService setorService;
 

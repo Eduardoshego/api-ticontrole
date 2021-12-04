@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/registros_impressoras")
 @AllArgsConstructor
+@CrossOrigin("https://ti-suporte-front-end.herokuapp.com")
 public class RegistroImpressoraController {
     private final RegistroImpressoraService registroImpressoraService;
 

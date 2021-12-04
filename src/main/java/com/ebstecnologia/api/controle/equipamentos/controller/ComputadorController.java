@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/computadores")
+@CrossOrigin("https://ti-suporte-front-end.herokuapp.com")
 public class ComputadorController {
 
     private final ComputadorService computadorService;
