@@ -1,13 +1,12 @@
 package com.ebstecnologia.api.controle.equipamentos.controller.exception;
 
-import com.ebstecnologia.api.controle.equipamentos.service.exception.MyExceptionSemEstoque;
+import com.ebstecnologia.api.controle.equipamentos.services.exceptions.MyExceptionSemEstoque;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.SQLIntegrityConstraintViolationException;
 
 @ControllerAdvice
 public class ControlleExceptionHandler {

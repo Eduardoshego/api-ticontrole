@@ -1,7 +1,7 @@
 package com.ebstecnologia.api.controle.equipamentos.controller.exception.objectNotFound;
 
 import com.ebstecnologia.api.controle.equipamentos.controller.exception.StandardError;
-import com.ebstecnologia.api.controle.equipamentos.service.exception.MyObjectNotFoundException;
+import com.ebstecnologia.api.controle.equipamentos.services.exceptions.MyObjectNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

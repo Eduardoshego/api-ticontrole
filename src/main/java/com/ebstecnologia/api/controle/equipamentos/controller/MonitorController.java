@@ -1,7 +1,7 @@
 package com.ebstecnologia.api.controle.equipamentos.controller;
 
 import com.ebstecnologia.api.controle.equipamentos.model.Monitor;
-import com.ebstecnologia.api.controle.equipamentos.service.MonitorService;
+import com.ebstecnologia.api.controle.equipamentos.services.MonitorService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

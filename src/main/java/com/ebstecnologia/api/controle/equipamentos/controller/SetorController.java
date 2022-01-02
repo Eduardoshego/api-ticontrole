@@ -3,7 +3,7 @@ package com.ebstecnologia.api.controle.equipamentos.controller;
 import com.ebstecnologia.api.controle.equipamentos.controller.DTO.SetorDTO;
 import com.ebstecnologia.api.controle.equipamentos.controller.DTO.SetorUpdateDTO;
 import com.ebstecnologia.api.controle.equipamentos.model.Setor;
-import com.ebstecnologia.api.controle.equipamentos.service.SetorService;
+import com.ebstecnologia.api.controle.equipamentos.services.SetorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

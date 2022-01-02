@@ -1,7 +1,7 @@
 package com.ebstecnologia.api.controle.equipamentos.controller;
 
 import com.ebstecnologia.api.controle.equipamentos.model.Switch;
-import com.ebstecnologia.api.controle.equipamentos.service.SwitchService;
+import com.ebstecnologia.api.controle.equipamentos.services.SwitchService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

@@ -2,7 +2,7 @@ package com.ebstecnologia.api.controle.equipamentos.controller.computador;
 
 import com.ebstecnologia.api.controle.equipamentos.controller.DTO.ComputadorDTO;
 import com.ebstecnologia.api.controle.equipamentos.model.Computador;
-import com.ebstecnologia.api.controle.equipamentos.service.computador.ComputadorServiceSave;
+import com.ebstecnologia.api.controle.equipamentos.services.computadorServices.ComputadorServiceSave;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

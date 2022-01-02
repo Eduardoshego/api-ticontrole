@@ -1,7 +1,6 @@
 package com.ebstecnologia.api.controle.equipamentos.controller;
 
 import com.ebstecnologia.api.controle.equipamentos.model.Estabilizador;
-import com.ebstecnologia.api.controle.equipamentos.service.EstabilizadorService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

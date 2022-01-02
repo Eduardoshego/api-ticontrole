@@ -1,7 +1,7 @@
 package com.ebstecnologia.api.controle.equipamentos.controller;
 
 import com.ebstecnologia.api.controle.equipamentos.model.Processador;
-import com.ebstecnologia.api.controle.equipamentos.service.ProcessadorService;
+import com.ebstecnologia.api.controle.equipamentos.services.ProcessadorService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

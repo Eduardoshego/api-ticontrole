@@ -1,7 +1,7 @@
 package com.ebstecnologia.api.controle.equipamentos.controller;
 
 import com.ebstecnologia.api.controle.equipamentos.model.RegistroImpressora;
-import com.ebstecnologia.api.controle.equipamentos.service.RegistroImpressoraService;
+import com.ebstecnologia.api.controle.equipamentos.services.RegistroImpressoraService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

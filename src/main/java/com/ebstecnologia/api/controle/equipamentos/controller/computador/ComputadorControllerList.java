@@ -1,7 +1,7 @@
 package com.ebstecnologia.api.controle.equipamentos.controller.computador;
 
 import com.ebstecnologia.api.controle.equipamentos.model.Computador;
-import com.ebstecnologia.api.controle.equipamentos.service.computador.ComputadorServiceList;
+import com.ebstecnologia.api.controle.equipamentos.services.computadorServices.ComputadorServiceListPageable;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class ComputadorControllerList {
 
-    private final ComputadorServiceList service;
+    private final ComputadorServiceListPageable service;
 
     @GetMapping
     public Page<Computador> list(Pageable pageable) {

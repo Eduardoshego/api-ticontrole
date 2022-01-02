@@ -1,11 +1,10 @@
 package com.ebstecnologia.api.controle.equipamentos.controller;
 
 import com.ebstecnologia.api.controle.equipamentos.model.IpAdrress;
-import com.ebstecnologia.api.controle.equipamentos.service.IpAdrressService;
+import com.ebstecnologia.api.controle.equipamentos.services.IpAdrressService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.GeneratedValue;
 import java.util.List;
 
 @RestController
