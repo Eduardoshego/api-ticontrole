@@ -3,7 +3,6 @@ package com.ebstecnologia.api.controle.equipamentos.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.List;
 
@@ -13,54 +12,74 @@ public class Computador implements Serializable {
 
     private final static long serialVersionUID = 1L;
 
+    //Propriedades do computador
 
+    //Id gerado automaticamente pelo banco auto incremente
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false, name = "nome_computador",length = 40)
-    private String nomeComputador;
+    //Host name do computador na rede
+    @Column(name = "host_name", nullable = false, length = 40)
+    private String hostName;
 
-    @Column(nullable = false, length = 50)
-    @JsonFormat(pattern = "000.000.000.000")
-    private String ip;
-
-    @Column( length = 50)
-    @NotEmpty                //Anotation de validação de dados.
+    //Marca do fabricante do computador esse campo é obrigatório
+    @Column(nullable = false, length = 40)
     private String marca;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "placa_mae_id")
-//    private PlacaMae placaMae;
 
-    @Column( length = 50)
+    //Modelo do equipamento. Esse campo é obrigatório
+    @Column(nullable = false, length = 40)
     private String modelo;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "processador_ID")
-//    private Processador processador;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "memoria_ID")
-//    private Memoria memoria;
 
+    //Patrimonio registrado para o equipamento. Esse campo e opcional
+    @Column(length = 40, nullable = true)
+    private String patrimonio;
+
+    //Campo para informar a capacidade de armazenamento da memória ram
+    @Column(nullable = false)
+    private int armazenamentoRam;
+
+    //Campo para informar o tipo de disco: SSD ou HD
+    @Column(nullable = false)
+    private String tipoDisco;
+
+    //Campo para informar a capacidade de armazenamento do disco em giga bytes. Campo obrigatório.
+    @Column(nullable = false)
+    private int capaciDisco;
+
+    // Relacionamentos
+
+    // Agregar um endereço de ip a maquina a ser cadastrada. Campo obrigatório
+    @OneToOne(optional = false)
+    private IpAdrress ipAdrress;
+
+    // Agregar uma impressora ao computador. Campo opcional
+    @OneToOne
+    private Impressora impressora;
+
+    // Agregar um setor ao computador. Campo obrigatório
+    @ManyToOne
+    @JoinColumn(name = "setor_id")
+    private Setor setor;
+
+    //Listar os de serviços prestados ao computador. Campo alimentado na criação de um serviço.
     @OneToMany
-    private List<Servico> servico;
+    private List<ServicoPrestado> servicoPrestado;
+
+    // Agregar um processador ao computador. Campo obrigatório.
+    @OneToOne(optional = false)
+    private Processador processador;
+
+    // Agregar uma placa mãe ao computador. Campo obrigatorio.
+    @OneToOne(optional = false)
+    private PlacaMae placaMae;
+
+    // Lista de softwares agregados ao computador.
+    @OneToMany
+    private List<Software> softwareList;
 
     @OneToOne
     private Switch aSwitch;
 
-    @OneToOne
-    private Impressora impressora;
 
-    @ManyToOne
-    @JoinColumn(name = "estabilizador_id")
-    private Estabilizador estabilizador;
-
-    @OneToOne
-    private Monitor monitor;
-
-    @ManyToOne
-    @JoinColumn(name = "setor_id")
-    private Setor setor;
 }

@@ -7,8 +7,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SetorDTO {
     private String nome;
-    private String email;
     private String telefone;
     private String ramal;
-    private String idSupervisor;
 }

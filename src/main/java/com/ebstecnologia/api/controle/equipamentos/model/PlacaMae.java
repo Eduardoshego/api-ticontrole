@@ -18,8 +18,8 @@ public class PlacaMae implements Serializable {
     @Column(length = 50)
     private String marca;
 
-    @Column(length = 50)
-    private String modelo;
+    @Column(name = "quant_slot_mem")
+    private int quantSlotsMem;
 
     @OneToMany
     private List<Computador> computadorList;

@@ -16,7 +16,7 @@ public class ImpressoraService {
 
     private final ImpressoraRepositroy impressoraRepositroy;
     private final RegistroImpressoraService regImp;
-    private final ComputadorService compServ;
+
 
     public Impressora save(Impressora imp){
         return impressoraRepositroy.save(imp);

@@ -19,8 +19,6 @@ public class Setor implements Serializable {
     @Column(name = "setor_nome", nullable = true, length = 100)
     private String setorNome;
 
-    @Column(name = "e_mail")
-    private String email;
 
     @Column
     private String telefone;
@@ -29,9 +27,7 @@ public class Setor implements Serializable {
     private String ramal;
 
 
-    @ManyToOne
-    @JoinColumn(name = "supervisor_ID")
-    private CadastroPessoas supervisor;
+
 
     @OneToMany
     private List<ProdutoSaida> produtoSaidaList;

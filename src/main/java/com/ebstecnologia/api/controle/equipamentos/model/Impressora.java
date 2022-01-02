@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "impressora")
@@ -28,8 +29,8 @@ public class Impressora implements Serializable {
     @Column(name = "ip_origem", nullable = false, length = 14)
     private String ipOrigem;
 
-    @Column(name = "ip_atual", nullable = true, length = 14)
-    private String ipAtual = "000.000.000.000";
+    @OneToOne
+    private IpAdrress ipAdrress;
 
     @OneToOne
     private Setor setorAtual;
@@ -39,4 +40,7 @@ public class Impressora implements Serializable {
 
     @OneToOne
     private Setor setor;
+
+    @OneToMany
+    private List<ServicoPrestado> servicoPrestados;
 }
