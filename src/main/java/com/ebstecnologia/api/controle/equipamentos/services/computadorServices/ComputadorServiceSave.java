@@ -1,10 +1,12 @@
 package com.ebstecnologia.api.controle.equipamentos.services.computadorServices;
 
-import com.ebstecnologia.api.controle.equipamentos.controller.DTO.ComputadorDTO;
+import com.ebstecnologia.api.controle.equipamentos.controllers.DTO.ComputadorDTO;
 import com.ebstecnologia.api.controle.equipamentos.model.*;
 import com.ebstecnologia.api.controle.equipamentos.repositories.ComputadorRepositoy;
 import com.ebstecnologia.api.controle.equipamentos.services.*;
 import com.ebstecnologia.api.controle.equipamentos.services.exceptions.computadorExceptions.MyExceptionSectorConflicts;
+import com.ebstecnologia.api.controle.equipamentos.services.impressoraServices.ImpressoraFindByIdService;
+import com.ebstecnologia.api.controle.equipamentos.services.ipAdrresServices.IpAdrresServiceFindById;
 import com.ebstecnologia.api.controle.equipamentos.services.softwareServices.SoftwareServiceFindById;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,9 +21,9 @@ public class ComputadorServiceSave {
     private final ProcessadorService processadorService;
     private final SwitchService switchService;
     private final SetorService setorService;
-    private final IpAdrressService ipAdrressService;
+    private final IpAdrresServiceFindById ipAdrressService;
     private final SoftwareServiceFindById softwareServiceFindById;
-    private final ImpressoraService impressoraService;
+    private final ImpressoraFindByIdService impressoraService;
 
     public Computador save(ComputadorDTO com){
 
@@ -30,7 +32,7 @@ public class ComputadorServiceSave {
         Switch switchObj =  switchService.findById(com.getSwitchId());
         Setor setor = setorService.findById(com.getSetorId());
         IpAdrress ipAdrress = ipAdrressService.findById(com.getIpId());
-//        Software software = softwareServiceFindById.findByID(com.getSoftwareId());
+        Software software = softwareServiceFindById.findByID(com.getSoftwareId());
         Impressora impressora = impressoraService.findById(com.getImpressoraId());
 
 

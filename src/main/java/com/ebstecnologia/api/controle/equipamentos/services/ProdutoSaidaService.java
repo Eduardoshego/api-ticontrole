@@ -1,11 +1,11 @@
 package com.ebstecnologia.api.controle.equipamentos.services;
 
-import com.ebstecnologia.api.controle.equipamentos.controller.DTO.ProdutoSaidaDTO;
+import com.ebstecnologia.api.controle.equipamentos.controllers.DTO.ProdutoSaidaDTO;
 import com.ebstecnologia.api.controle.equipamentos.model.Produto;
 import com.ebstecnologia.api.controle.equipamentos.model.ProdutoSaida;
 import com.ebstecnologia.api.controle.equipamentos.model.Setor;
 import com.ebstecnologia.api.controle.equipamentos.repositories.ProdutoSaidaRepository;
-import com.ebstecnologia.api.controle.equipamentos.services.exceptions.MyExceptionSemEstoque;
+import com.ebstecnologia.api.controle.equipamentos.services.exceptions.exceptionsProduto.MyExceptionSemEstoque;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

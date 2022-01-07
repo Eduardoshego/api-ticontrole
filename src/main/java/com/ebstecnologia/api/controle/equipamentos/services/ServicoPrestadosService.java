@@ -1,12 +1,13 @@
 package com.ebstecnologia.api.controle.equipamentos.services;
 
-import com.ebstecnologia.api.controle.equipamentos.controller.DTO.ServicoPrestadoDto;
+import com.ebstecnologia.api.controle.equipamentos.controllers.DTO.ServicoPrestadoDto;
 import com.ebstecnologia.api.controle.equipamentos.model.Computador;
 import com.ebstecnologia.api.controle.equipamentos.model.Impressora;
 import com.ebstecnologia.api.controle.equipamentos.model.ServicoPrestado;
 import com.ebstecnologia.api.controle.equipamentos.repositories.ServicoRepository;
 import com.ebstecnologia.api.controle.equipamentos.services.computadorServices.ComputadorServiceFindById;
 import com.ebstecnologia.api.controle.equipamentos.services.exceptions.MyObjectNotFoundException;
+import com.ebstecnologia.api.controle.equipamentos.services.impressoraServices.ImpressoraFindByIdService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,7 @@ public class ServicoPrestadosService {
 
     private final ServicoRepository servicoRepository;
     private final ComputadorServiceFindById computador;
-    private final ImpressoraService impressoraService;
+    private final ImpressoraFindByIdService impressoraService;
 
 
     public ServicoPrestado save(ServicoPrestadoDto servDto){
