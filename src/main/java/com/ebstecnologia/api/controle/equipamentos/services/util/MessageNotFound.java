@@ -8,5 +8,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MessageNotFound {
 
-    private final String message = "Não encontrado na base de dados! Informe a consulta novamente";
+  private final  String message = " Nenhum registro encontrado na base de dados! Informe a consulta novamente";
+
+    public String message( ){
+        return getMessage();
+    }
 }
