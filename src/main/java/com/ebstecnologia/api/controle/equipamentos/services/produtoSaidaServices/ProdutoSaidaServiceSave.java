@@ -5,9 +5,9 @@ import com.ebstecnologia.api.controle.equipamentos.model.Produto;
 import com.ebstecnologia.api.controle.equipamentos.model.ProdutoSaida;
 import com.ebstecnologia.api.controle.equipamentos.model.Setor;
 import com.ebstecnologia.api.controle.equipamentos.repositories.ProdutoSaidaRepository;
-import com.ebstecnologia.api.controle.equipamentos.services.ProdutoService;
 import com.ebstecnologia.api.controle.equipamentos.services.SetorService;
 import com.ebstecnologia.api.controle.equipamentos.services.exceptions.exceptionsProduto.MyExceptionSemEstoque;
+import com.ebstecnologia.api.controle.equipamentos.services.produtoServices.ProdutoServiceFindById;
 import com.ebstecnologia.api.controle.equipamentos.services.produtoServices.ProdutoServiceUpdate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ public class ProdutoSaidaServiceSave {
 
     private final ProdutoSaidaRepository repository;
     private final SetorService setorService;
-    private final ProdutoService produtoService;
+    private final ProdutoServiceFindById produtoService;
     private final ProdutoServiceUpdate produtoServiceUpdate;
 
     public ProdutoSaida save(ProdutoSaidaDTO dto){

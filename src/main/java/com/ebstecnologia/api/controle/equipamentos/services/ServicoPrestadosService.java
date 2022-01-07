@@ -4,7 +4,7 @@ import com.ebstecnologia.api.controle.equipamentos.controllers.DTO.ServicoPresta
 import com.ebstecnologia.api.controle.equipamentos.model.Computador;
 import com.ebstecnologia.api.controle.equipamentos.model.Impressora;
 import com.ebstecnologia.api.controle.equipamentos.model.ServicoPrestado;
-import com.ebstecnologia.api.controle.equipamentos.repositories.ServicoRepository;
+import com.ebstecnologia.api.controle.equipamentos.repositories.ServicoPrestadoRepository;
 import com.ebstecnologia.api.controle.equipamentos.services.computadorServices.ComputadorServiceFindById;
 import com.ebstecnologia.api.controle.equipamentos.services.exceptions.MyObjectNotFoundException;
 import com.ebstecnologia.api.controle.equipamentos.services.impressoraServices.ImpressoraFindByIdService;
@@ -17,29 +17,12 @@ import java.util.List;
 @AllArgsConstructor
 public class ServicoPrestadosService {
 
-    private final ServicoRepository servicoRepository;
+    private final ServicoPrestadoRepository servicoRepository;
     private final ComputadorServiceFindById computador;
     private final ImpressoraFindByIdService impressoraService;
 
 
-    public ServicoPrestado save(ServicoPrestadoDto servDto){
 
-        ServicoPrestado obj =  new ServicoPrestado();
-
-        if (servDto.getComputadorId() != null){
-            Computador  comp = computador.findById(servDto.getComputadorId());
-            obj.setComputador(comp);
-
-        }
-        else{
-             Impressora impressora = impressoraService.findById(servDto.getImpressoraId());
-             obj.setImpressora(impressora);
-        }
-
-        obj.setDescricao(servDto.getDescricaoServico());
-        return servicoRepository.save(obj);
-
-    }
 
     public List<ServicoPrestado> findAll(){
         return servicoRepository.findAll();

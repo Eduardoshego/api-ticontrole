@@ -1,7 +1,7 @@
-package com.ebstecnologia.api.controle.equipamentos.services.processadorServices;
+package com.ebstecnologia.api.controle.equipamentos.services.servicoPrestadoService;
 
-import com.ebstecnologia.api.controle.equipamentos.model.Processador;
-import com.ebstecnologia.api.controle.equipamentos.repositories.ProcessadorRepository;
+import com.ebstecnologia.api.controle.equipamentos.model.ServicoPrestado;
+import com.ebstecnologia.api.controle.equipamentos.repositories.ServicoPrestadoRepository;
 import com.ebstecnologia.api.controle.equipamentos.services.exceptions.MyObjectNotFoundException;
 import com.ebstecnologia.api.controle.equipamentos.services.util.MessageNotFound;
 import lombok.RequiredArgsConstructor;
@@ -9,17 +9,17 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class ProcessadorServiceFindById {
+public class ServicoPrestadoServiceFindById {
 
-    private final ProcessadorRepository repository;
+    private final ServicoPrestadoRepository repository;
     private final MessageNotFound msg;
 
-    public Processador findById(Integer id){
-        Processador p = new Processador();
+    public ServicoPrestado findById(Integer id){
         return repository.findById(id).orElseThrow(
                 ()-> new MyObjectNotFoundException(
-                     p.getClass().getName() + msg.getMessage()
+                        msg.getMessage()
                 )
         );
     }
+
 }

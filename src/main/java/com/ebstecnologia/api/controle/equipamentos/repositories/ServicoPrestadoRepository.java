@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ServicoRepository extends JpaRepository<ServicoPrestado, Integer> {
+public interface ServicoPrestadoRepository extends JpaRepository<ServicoPrestado, Integer> {
 
     @Query("select s from ServicoPrestado s join s.computador c "
             + " where upper (c.hostName) like upper( :nome ) and MONTH(s.data) =:mes ")

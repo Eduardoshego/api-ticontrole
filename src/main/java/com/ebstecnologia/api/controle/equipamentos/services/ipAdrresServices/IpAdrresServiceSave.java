@@ -2,7 +2,6 @@ package com.ebstecnologia.api.controle.equipamentos.services.ipAdrresServices;
 
 import com.ebstecnologia.api.controle.equipamentos.model.IpAdrress;
 import com.ebstecnologia.api.controle.equipamentos.repositories.IpAdrresRepository;
-import com.ebstecnologia.api.controle.equipamentos.services.util.TransformeToString;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -7,7 +7,9 @@ import com.ebstecnologia.api.controle.equipamentos.services.*;
 import com.ebstecnologia.api.controle.equipamentos.services.exceptions.computadorExceptions.MyExceptionSectorConflicts;
 import com.ebstecnologia.api.controle.equipamentos.services.impressoraServices.ImpressoraFindByIdService;
 import com.ebstecnologia.api.controle.equipamentos.services.ipAdrresServices.IpAdrresServiceFindById;
+import com.ebstecnologia.api.controle.equipamentos.services.processadorServices.ProcessadorServiceFindById;
 import com.ebstecnologia.api.controle.equipamentos.services.softwareServices.SoftwareServiceFindById;
+import com.ebstecnologia.api.controle.equipamentos.services.util.MessageConflictSetores;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,12 +20,13 @@ public class ComputadorServiceSave {
 
 
     private final ComputadorRepositoy repositoy;
-    private final ProcessadorService processadorService;
+    private final ProcessadorServiceFindById processadorService;
     private final SwitchService switchService;
     private final SetorService setorService;
     private final IpAdrresServiceFindById ipAdrressService;
     private final SoftwareServiceFindById softwareServiceFindById;
     private final ImpressoraFindByIdService impressoraService;
+    private final MessageConflictSetores msg;
 
     public Computador save(ComputadorDTO com){
 
@@ -36,6 +39,7 @@ public class ComputadorServiceSave {
         Impressora impressora = impressoraService.findById(com.getImpressoraId());
 
 
+
         Computador computador = new Computador();
 
         computador.setProcessador(processador);
@@ -46,9 +50,9 @@ public class ComputadorServiceSave {
         }
         else {
             throw new MyExceptionSectorConflicts(
-                    "Impressora não pode ser adcionada a um computador em setores diferentes:" +
-                            "Setor computador: " + computador.getSetor()
-                            + "Setor impressora: " + impressora.getSetor());
+                    msg.alert(computador.getSetor().getSetorNome(),
+                            impressora.getSetor().getSetorNome())
+            );
         }
 
 
