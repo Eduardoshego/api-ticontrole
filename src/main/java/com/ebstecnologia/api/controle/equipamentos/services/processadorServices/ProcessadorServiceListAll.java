@@ -11,7 +11,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProcessadorServiceListAll {
 
-    private ProcessadorRepository repository;
+    private final ProcessadorRepository repository;
 
     public List<Processador> processadorList(){
         return repository.findAll();
