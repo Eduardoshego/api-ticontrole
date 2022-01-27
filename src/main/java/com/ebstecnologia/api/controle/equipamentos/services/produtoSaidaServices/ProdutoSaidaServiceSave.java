@@ -35,6 +35,7 @@ public class ProdutoSaidaServiceSave {
             produtoServiceUpdate.produtoUpdate(produto.getId(), produto);
             ProdutoSaida produtoSaida =  new ProdutoSaida();
             produtoSaida.setProdutoDecricao(produto.getDescricao());
+            produtoSaida.setQuantProdutoSaida(dto.getQuant());
             produtoSaida.setProduto(produto);
             produtoSaida.setSetor(setor);
            return repository.save(produtoSaida);

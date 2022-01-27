@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +19,7 @@ public class ComputadorControllerListPageable {
     private final ComputadorServiceListPageable service;
 
     @GetMapping
-    public Page<Computador> list(Pageable pageable) {
+    public Page<Computador> listPageable( Pageable pageable) {
         return service.list(pageable);
     }
 }

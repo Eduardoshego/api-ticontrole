@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/produtos-saidas")
+
 public class ProdutoSaidaControllerListPageable {
 
     private final ProdutoSaidaServiceListPageable service;

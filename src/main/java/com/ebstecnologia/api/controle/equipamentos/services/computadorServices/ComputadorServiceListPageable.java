@@ -13,6 +13,10 @@ public class ComputadorServiceListPageable {
 
     private final ComputadorRepositoy repositoy;
 
+    /**
+     * @param pageable
+     * @return pagina
+     */
     public Page<Computador> list(Pageable pageable){
         return repositoy.findAll(pageable);
     }
