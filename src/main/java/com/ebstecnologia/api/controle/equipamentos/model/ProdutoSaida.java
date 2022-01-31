@@ -24,9 +24,12 @@ public class ProdutoSaida implements Serializable {
 
     @Column
     private Integer quantProdutoSaida;
+//
+//    @Column
+//    @JsonFormat(pattern = "dd/MM/yyyy")
+//    private LocalDate localDate;
 
     @Column
-    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate localDate;
 
     @Column

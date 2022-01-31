@@ -38,6 +38,7 @@ public class ProdutoSaidaServiceSave {
             produtoSaida.setQuantProdutoSaida(dto.getQuant());
             produtoSaida.setProduto(produto);
             produtoSaida.setSetor(setor);
+            produtoSaida.setQuantProdutoSaida(dto.getQuant());
            return repository.save(produtoSaida);
 
         }

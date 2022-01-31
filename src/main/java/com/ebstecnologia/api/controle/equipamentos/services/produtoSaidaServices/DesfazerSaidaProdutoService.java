@@ -3,7 +3,6 @@ package com.ebstecnologia.api.controle.equipamentos.services.produtoSaidaService
 import com.ebstecnologia.api.controle.equipamentos.model.Produto;
 import com.ebstecnologia.api.controle.equipamentos.model.ProdutoSaida;
 import com.ebstecnologia.api.controle.equipamentos.services.exceptions.exceptionsProduto.MyExceptionForaDoPrazoDeExclusao;
-import com.ebstecnologia.api.controle.equipamentos.services.produtoServices.ProdutoServiceFindById;
 import com.ebstecnologia.api.controle.equipamentos.services.produtoServices.ProdutoServiceUpdate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,7 +11,7 @@ import java.time.LocalDate;
 
 @Service
 @RequiredArgsConstructor
-public class DesfazerSaida {
+public class DesfazerSaidaProdutoService {
 
     private final ProdutoSaidaServiceFindById produtoSaidaServiceFindById;
     private final ProdutoSaidaDeleteById produtoSaidaDeleteById;
@@ -20,8 +19,13 @@ public class DesfazerSaida {
 
     public void desfazerSaida(Integer id){
         ProdutoSaida produtosaida = produtoSaidaServiceFindById.findById(id);
-         LocalDate dataHoje = LocalDate.now();
-         if(dataHoje == produtosaida.getLocalDate()){
+//        DateTimeFormatter dataAgora = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//        dataAgora.format(LocalTime.now());
+        LocalDate dataAgora = LocalDate.now();
+        System.out.println("Data agora: " + dataAgora + " dataBanco: " + produtosaida.getLocalDate());
+
+        System.out.println(dataAgora);
+         if(dataAgora.equals(produtosaida.getLocalDate())){
              Produto produto = produtosaida.getProduto();
                 produto.setQuantidade(produtosaida.getQuantProdutoSaida() + produto.getQuantidade() );
                 produtoServiceUpdate.produtoUpdate(produto.getId(), produto);
@@ -30,7 +34,10 @@ public class DesfazerSaida {
          }
          else{
              throw new MyExceptionForaDoPrazoDeExclusao(
-                     "Não é possível desfazer esse lançamento contate o suporte! "
+                     "Não é possível desfazer esse lançamento, " +
+                             "Motivo: Lançamento fora do prazo de exclusão: " +
+                             " Data da saída:  " + produtosaida.getLocalDate() +
+                             " Data hoje: " + dataAgora
              );
         }
 
