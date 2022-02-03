@@ -1,7 +1,7 @@
 package com.ebstecnologia.api.controle.equipamentos.controllers.exception.exceptionProdutos;
 
 import com.ebstecnologia.api.controle.equipamentos.controllers.exception.StandardError;
-import com.ebstecnologia.api.controle.equipamentos.services.exceptions.exceptionsProduto.MyExceptionSemEstoque;
+import com.ebstecnologia.api.controle.equipamentos.services.exceptions.exceptionsProduto.MyExceptionVerificaEstoque;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 public class ControlleExceptionHandlerSemEstoque {
 
 
-    @ExceptionHandler(MyExceptionSemEstoque.class)
-    public ResponseEntity<StandardError> semEstoque(MyExceptionSemEstoque e, HttpServletRequest request){
+    @ExceptionHandler(MyExceptionVerificaEstoque.class)
+    public ResponseEntity<StandardError> semEstoque(MyExceptionVerificaEstoque e, HttpServletRequest request){
         StandardError err = new StandardError();
         err.setTimeStamp(System.currentTimeMillis());
         err.setMsg(e.getMessage());

@@ -1,7 +1,7 @@
 package com.ebstecnologia.api.controle.equipamentos.controllers.exception.exceptionProdutos;
 
 import com.ebstecnologia.api.controle.equipamentos.controllers.exception.StandardError;
-import com.ebstecnologia.api.controle.equipamentos.services.exceptions.exceptionsProduto.MyExceptionSemEstoque;
+import com.ebstecnologia.api.controle.equipamentos.services.exceptions.exceptionsProduto.MyExceptionVerificaEstoque;
 import com.ebstecnologia.api.controle.equipamentos.services.exceptions.exceptionsProduto.MyExceptionValorInvalido;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,7 @@ public class ControlleExceptionHandlerValueInvalid {
 
 
     @ExceptionHandler(MyExceptionValorInvalido.class)
-    public ResponseEntity<StandardError> valueNotValid(MyExceptionSemEstoque e, HttpServletRequest request){
+    public ResponseEntity<StandardError> valueNotValid(MyExceptionVerificaEstoque e, HttpServletRequest request){
         StandardError err = new StandardError();
         err.setTimeStamp(System.currentTimeMillis());
         err.setMsg(e.getMessage());

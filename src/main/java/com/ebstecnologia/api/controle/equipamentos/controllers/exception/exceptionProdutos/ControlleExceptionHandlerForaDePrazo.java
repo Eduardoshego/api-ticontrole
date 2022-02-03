@@ -2,7 +2,6 @@ package com.ebstecnologia.api.controle.equipamentos.controllers.exception.except
 
 import com.ebstecnologia.api.controle.equipamentos.controllers.exception.StandardError;
 import com.ebstecnologia.api.controle.equipamentos.services.exceptions.exceptionsProduto.MyExceptionForaDoPrazoDeExclusao;
-import com.ebstecnologia.api.controle.equipamentos.services.exceptions.exceptionsProduto.MyExceptionSemEstoque;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
