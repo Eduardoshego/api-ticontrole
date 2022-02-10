@@ -2,7 +2,8 @@ package com.ebstecnologia.api.controle.equipamentos.services.computadorServices;
 
 import com.ebstecnologia.api.controle.equipamentos.controllers.DTO.ComputadorDTO;
 import com.ebstecnologia.api.controle.equipamentos.model.*;
-import com.ebstecnologia.api.controle.equipamentos.repositories.ComputadorRepositoy;
+import com.ebstecnologia.api.controle.equipamentos.repositories.ImpressoraRepositroy;
+import com.ebstecnologia.api.controle.equipamentos.repositories.computadoresRepository.ComputadorRepositoy;
 import com.ebstecnologia.api.controle.equipamentos.services.*;
 import com.ebstecnologia.api.controle.equipamentos.services.exceptions.computadorExceptions.MyExceptionSectorConflicts;
 import com.ebstecnologia.api.controle.equipamentos.services.impressoraServices.ImpressoraFindByIdService;
@@ -10,7 +11,10 @@ import com.ebstecnologia.api.controle.equipamentos.services.ipAdrresServices.IpA
 import com.ebstecnologia.api.controle.equipamentos.services.processadorServices.ProcessadorServiceFindById;
 import com.ebstecnologia.api.controle.equipamentos.services.softwareServices.SoftwareServiceFindById;
 import com.ebstecnologia.api.controle.equipamentos.services.util.MessageConflictSetores;
+import com.ebstecnologia.api.controle.equipamentos.services.util.PatrimonioValidation;
+import com.ebstecnologia.api.controle.equipamentos.services.util.ValidationImpressora;
 import lombok.AllArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,50 +28,34 @@ public class ComputadorServiceSave {
     private final SwitchService switchService;
     private final SetorService setorService;
     private final IpAdrresServiceFindById ipAdrressService;
-    private final SoftwareServiceFindById softwareServiceFindById;
-    private final ImpressoraFindByIdService impressoraService;
-    private final MessageConflictSetores msg;
+    private final ValidationImpressora impressoraService;
+    private final PatrimonioValidation patrimonioValidation;
 
-    public Computador save(ComputadorDTO com){
+    public Computador save(ComputadorDTO computadorDTO) {
 
-        //Buscando os componentes agregados aos Computadores.
-        Processador processador = processadorService.findById(com.getProcessadorId());
-        Switch switchObj =  switchService.findById(com.getSwitchId());
-        Setor setor = setorService.findById(com.getSetorId());
-        IpAdrress ipAdrress = ipAdrressService.findById(com.getIpId());
-        Software software = softwareServiceFindById.findByID(com.getSoftwareId());
-        Impressora impressora = impressoraService.findById(com.getImpressoraId());
-
-
+        Setor setor = setorService.findById(computadorDTO.getSetorId());
+        IpAdrress ipAdrress =  ipAdrressService.findById(computadorDTO.getIpId());
+        Switch switchObj = switchService.findById(computadorDTO.getSwitchId());
+        Processador processador = processadorService.findById(computadorDTO.getProcessadorId());
+        Impressora impressora = impressoraService.validationImpressora(computadorDTO.getImpressoraId(),setor.getId());
 
         Computador computador = new Computador();
 
-        computador.setProcessador(processador);
+        computador.setImpressora(impressora);
+        computador.setPatrimonio(patrimonioValidation.patrimonioValidation(computadorDTO.getPatrimonio()));
+        computador.setMarca(computadorDTO.getMarca());
+        computador.setModelo(computadorDTO.getModelo());
+        computador.setHostName(computadorDTO.getNomeComputador());
+        computador.setArmazenamentoRam(computadorDTO.getQuantRam());
         computador.setASwitch(switchObj);
-        computador.setSetor(setor);
-        if(computador.getSetor() == impressora.getSetor()){
-            computador.setImpressora(impressora);
-        }
-        else {
-            throw new MyExceptionSectorConflicts(
-                    msg.alert(computador.getSetor().getSetorNome(),
-                            impressora.getSetor().getSetorNome())
-            );
-        }
-
-
-        computador.setHostName(computador.getHostName());
-        computador.setModelo(com.getModelo());
-        computador.setMarca(com.getMarca());
+        computador.setCapaciDisco(computadorDTO.getQuantDisco());
+        computador.setTipoDisco(computadorDTO.getTipoDisco());
         computador.setIpAdrress(ipAdrress);
-        if(computador.getPatrimonio() != null){
-            computador.setPatrimonio(computador.getPatrimonio());
-
-        }
-        else{
-            computador.setPatrimonio("Não informado!");
-        }
 
         return repositoy.save(computador);
+
+
+
+
     }
 }

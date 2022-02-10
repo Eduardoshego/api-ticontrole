@@ -20,7 +20,7 @@ public class ComputadorControllerSave {
     private final ComputadorServiceSave serviceSave;
 
     @PostMapping
-    public Computador save(@RequestBody @Valid ComputadorDTO dto){
+    public Computador save(@RequestBody  ComputadorDTO dto){
         return serviceSave.save(dto);
     }
 }

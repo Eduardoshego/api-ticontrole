@@ -2,6 +2,7 @@ package com.ebstecnologia.api.controle.equipamentos.controllers.exception.except
 
 import com.ebstecnologia.api.controle.equipamentos.controllers.exception.StandardError;
 import com.ebstecnologia.api.controle.equipamentos.services.exceptions.computadorExceptions.MyExceptionSectorConflicts;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -28,6 +29,14 @@ public class ControllerExceptionHandlerConflictSetor {
         err.setStatus(HttpStatus.NO_CONTENT.value());
         err.setTimeStamp(System.currentTimeMillis());
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body(err);
+    }
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<StandardError> ipAddToAnotherComputer(DataIntegrityViolationException e, HttpServletRequest request){
+        StandardError err = new StandardError();
+        err.setMsg("Esse endereço ip já está alocado a outro equipamento");
+        err.setTimeStamp(System.currentTimeMillis());
+        err.setStatus(HttpStatus.IM_USED.value());
+        return ResponseEntity.status(HttpStatus.IM_USED).body(err);
     }
 
 }

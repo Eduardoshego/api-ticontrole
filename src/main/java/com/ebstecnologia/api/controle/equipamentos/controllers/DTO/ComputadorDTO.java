@@ -21,8 +21,8 @@ public class ComputadorDTO {
     private Integer setorId;
     @NotNull(message = "Ip não pode ser vazio ou nulo")
     private Integer ipId;
-    private Integer softwareId;
     private Integer impressoraId;
+    private String patrimonio;
 
     //Proriedades do computador
     @NotEmpty(message = "Host name não pode ser vazio ou nulo")
@@ -31,6 +31,12 @@ public class ComputadorDTO {
     private String marca;
     @NotEmpty(message = "Modelo não pose vazio ou nulo")
     private String modelo;
+    @NotEmpty
+    private int quantRam;
+    @NotEmpty
+    private int quantDisco;
+    @NotEmpty
+    private String tipoDisco;
 
 
 

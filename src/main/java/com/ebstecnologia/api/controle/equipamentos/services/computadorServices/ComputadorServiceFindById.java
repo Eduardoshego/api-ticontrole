@@ -1,7 +1,7 @@
 package com.ebstecnologia.api.controle.equipamentos.services.computadorServices;
 
 import com.ebstecnologia.api.controle.equipamentos.model.Computador;
-import com.ebstecnologia.api.controle.equipamentos.repositories.ComputadorRepositoy;
+import com.ebstecnologia.api.controle.equipamentos.repositories.computadoresRepository.ComputadorRepositoy;
 import com.ebstecnologia.api.controle.equipamentos.services.exceptions.MyObjectNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
