@@ -12,6 +12,6 @@ import java.util.List;
 public interface ComputadorRepositoryFindBySetor extends JpaRepository<Computador, Integer> {
 
     @Query("select computador from Computador computador join computador.setor setor where " +
-            "upper (setor.setorNome) like upper(:nome)")
+            "upper (setor.setorNome) like upper(:nome) ")
     List<Computador> findBySetor(@Param("nome")String nome);
 }

@@ -1,6 +1,6 @@
 package com.ebstecnologia.api.controle.equipamentos.services.servicoPrestadoService;
 
-import com.ebstecnologia.api.controle.equipamentos.controllers.DTO.ServicoPrestadoDto;
+import com.ebstecnologia.api.controle.equipamentos.controllers.dto.ServicoPrestadoDto;
 import com.ebstecnologia.api.controle.equipamentos.model.Computador;
 import com.ebstecnologia.api.controle.equipamentos.model.Impressora;
 import com.ebstecnologia.api.controle.equipamentos.model.ServicoPrestado;

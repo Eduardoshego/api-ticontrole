@@ -26,11 +26,11 @@ public class Impressora implements Serializable {
     @Column(name = "num_serie", length = 20)
     private String numSerie;
 
-    @Column(name = "ip_origem", nullable = false, length = 14)
-    private String ipOrigem;
+    @OneToOne
+    private IpAdrress ipOrigem;
 
     @OneToOne
-    private IpAdrress ipAdrress;
+    private IpAdrress ipAtual;
 
     @OneToOne
     private Setor setorAtual;

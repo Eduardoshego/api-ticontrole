@@ -1,12 +1,10 @@
 package com.ebstecnologia.api.controle.equipamentos.services.produtoSaidaServices;
 
-import com.ebstecnologia.api.controle.equipamentos.controllers.DTO.ProdutoSaidaDTO;
+import com.ebstecnologia.api.controle.equipamentos.controllers.dto.ProdutoSaidaDTO;
 import com.ebstecnologia.api.controle.equipamentos.model.Produto;
 import com.ebstecnologia.api.controle.equipamentos.model.ProdutoSaida;
-import com.ebstecnologia.api.controle.equipamentos.model.Setor;
 import com.ebstecnologia.api.controle.equipamentos.repositories.ProdutoSaidaRepository;
 import com.ebstecnologia.api.controle.equipamentos.services.SetorService;
-import com.ebstecnologia.api.controle.equipamentos.services.exceptions.exceptionsProduto.MyExceptionVerificaEstoque;
 import com.ebstecnologia.api.controle.equipamentos.services.produtoServices.ProdutoServiceFindById;
 import com.ebstecnologia.api.controle.equipamentos.services.produtoServices.ProdutoServiceUpdate;
 import com.ebstecnologia.api.controle.equipamentos.services.util.ValidaSaidaProduto;

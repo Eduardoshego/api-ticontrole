@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/impressoras")
+@RequestMapping("/api/impressoras")
 public class ImpressoraControllerListPage {
 
     private final ImpressoraPaginatorListService service;

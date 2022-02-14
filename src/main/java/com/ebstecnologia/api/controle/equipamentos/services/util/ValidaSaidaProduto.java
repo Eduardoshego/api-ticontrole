@@ -1,6 +1,6 @@
 package com.ebstecnologia.api.controle.equipamentos.services.util;
 
-import com.ebstecnologia.api.controle.equipamentos.controllers.DTO.ProdutoSaidaDTO;
+import com.ebstecnologia.api.controle.equipamentos.controllers.dto.ProdutoSaidaDTO;
 import com.ebstecnologia.api.controle.equipamentos.model.Produto;
 import com.ebstecnologia.api.controle.equipamentos.services.exceptions.exceptionsProduto.MyExceptionVerificaEstoque;
 import com.ebstecnologia.api.controle.equipamentos.services.produtoServices.ProdutoServiceFindById;

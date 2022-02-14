@@ -1,20 +1,15 @@
 package com.ebstecnologia.api.controle.equipamentos.services.computadorServices;
 
-import com.ebstecnologia.api.controle.equipamentos.controllers.DTO.ComputadorDTO;
+import com.ebstecnologia.api.controle.equipamentos.controllers.dto.ComputadorDTO;
+import com.ebstecnologia.api.controle.equipamentos.controllers.dto.dtoComputador.ComputadorDtoResponse;
 import com.ebstecnologia.api.controle.equipamentos.model.*;
-import com.ebstecnologia.api.controle.equipamentos.repositories.ImpressoraRepositroy;
 import com.ebstecnologia.api.controle.equipamentos.repositories.computadoresRepository.ComputadorRepositoy;
 import com.ebstecnologia.api.controle.equipamentos.services.*;
-import com.ebstecnologia.api.controle.equipamentos.services.exceptions.computadorExceptions.MyExceptionSectorConflicts;
-import com.ebstecnologia.api.controle.equipamentos.services.impressoraServices.ImpressoraFindByIdService;
 import com.ebstecnologia.api.controle.equipamentos.services.ipAdrresServices.IpAdrresServiceFindById;
 import com.ebstecnologia.api.controle.equipamentos.services.processadorServices.ProcessadorServiceFindById;
-import com.ebstecnologia.api.controle.equipamentos.services.softwareServices.SoftwareServiceFindById;
-import com.ebstecnologia.api.controle.equipamentos.services.util.MessageConflictSetores;
 import com.ebstecnologia.api.controle.equipamentos.services.util.PatrimonioValidation;
-import com.ebstecnologia.api.controle.equipamentos.services.util.ValidationImpressora;
+import com.ebstecnologia.api.controle.equipamentos.services.util.CheckSectorConflit;
 import lombok.AllArgsConstructor;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,10 +23,10 @@ public class ComputadorServiceSave {
     private final SwitchService switchService;
     private final SetorService setorService;
     private final IpAdrresServiceFindById ipAdrressService;
-    private final ValidationImpressora impressoraService;
+    private final CheckSectorConflit impressoraService;
     private final PatrimonioValidation patrimonioValidation;
 
-    public Computador save(ComputadorDTO computadorDTO) {
+    public ComputadorDtoResponse save(ComputadorDTO computadorDTO) {
 
         Setor setor = setorService.findById(computadorDTO.getSetorId());
         IpAdrress ipAdrress =  ipAdrressService.findById(computadorDTO.getIpId());
@@ -51,8 +46,16 @@ public class ComputadorServiceSave {
         computador.setCapaciDisco(computadorDTO.getQuantDisco());
         computador.setTipoDisco(computadorDTO.getTipoDisco());
         computador.setIpAdrress(ipAdrress);
+        computador.setSetor(setor);
 
-        return repositoy.save(computador);
+        Computador obj = repositoy.save(computador);
+        ComputadorDtoResponse computadorDtoResponse = new ComputadorDtoResponse();
+
+        computadorDtoResponse.setId(obj.getId());
+        computadorDtoResponse.setHostName(obj.getHostName());
+        computadorDtoResponse.setIp(ipAdrress.getIp());
+        computadorDtoResponse.setNomeSetor(setor.getSetorNome());
+        return computadorDtoResponse;
 
 
 

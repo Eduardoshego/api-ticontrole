@@ -1,7 +1,7 @@
 package com.ebstecnologia.api.controle.equipamentos.services;
 
-import com.ebstecnologia.api.controle.equipamentos.controllers.DTO.SetorDTO;
-import com.ebstecnologia.api.controle.equipamentos.controllers.DTO.SetorUpdateDTO;
+import com.ebstecnologia.api.controle.equipamentos.controllers.dto.SetorDTO;
+import com.ebstecnologia.api.controle.equipamentos.controllers.dto.SetorUpdateDTO;
 import com.ebstecnologia.api.controle.equipamentos.model.Setor;
 import com.ebstecnologia.api.controle.equipamentos.repositories.SetorRepository;
 import com.ebstecnologia.api.controle.equipamentos.services.exceptions.MyObjectNotFoundException;

@@ -1,6 +1,6 @@
 package com.ebstecnologia.api.controle.equipamentos.services.produtoEntradaServices;
 
-import com.ebstecnologia.api.controle.equipamentos.controllers.DTO.ProdutoEntradaDTO;
+import com.ebstecnologia.api.controle.equipamentos.controllers.dto.ProdutoEntradaDTO;
 import com.ebstecnologia.api.controle.equipamentos.model.Produto;
 import com.ebstecnologia.api.controle.equipamentos.model.ProdutoEntrada;
 import com.ebstecnologia.api.controle.equipamentos.repositories.ProdutoEntradaRepository;

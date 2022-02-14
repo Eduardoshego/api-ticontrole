@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(ComputadorControllerSave.URL)
+@RequestMapping("/api/computadores")
 @AllArgsConstructor
 public class ComputadorControllerListPageable {
 
-    public final static String URL = "api/computadores";
     private final ComputadorServiceListPageable service;
 
     @GetMapping
